@@ -29,7 +29,7 @@
           time: +oneInt.children[3].value * 60 + +oneInt.children[5].value
         })
       });
-      const finalInts = {title: titleEl.value, Intervals: formattedInts};
+      const finalInts = {title: titleEl.value, intervals: formattedInts};
       saveToLocal(finalInts)
     };
 

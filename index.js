@@ -5,10 +5,14 @@
     const pauseBtn = document.getElementById('pause-btn');
     const resumeBtn = document.getElementById('resume-btn');
     const spanPercent = document.getElementById('percent');
+    const titleEl = document.getElementById('int-title');
+    const descEl = document.getElementById('int-desc');
     const ctx = canvas.getContext('2d');
-    const intervals = [10, 5, 15, 5];
-    const totalTime = intervals.reduce((prev, num)=>prev + num);
-    const totalTimeCount = totalTime * 5;
+    let intervals = [];
+    let intervalIndex = 0;
+    let workout;
+    let totalTime = 0;
+    let totalTimeCount = totalTime * 5;
     let overallDegrees = 0;
     let overallCount = 0;
     let posX = canvas.width / 2;
@@ -21,10 +25,20 @@
     let currIndex;
     let arcInterval;
     let count;
-    // ctx.lineCap = 'round';
+
+    function retrieveInts() {
+      intervals = JSON.parse(localStorage.allIntervals);
+      workout = intervals[intervalIndex];
+      totalTime = workout?.intervals?.reduce((prev, num)=>{
+        return prev + num.time
+      }, 0) || 0;
+      totalTimeCount = totalTime * 5;
+    }
 
     function newInterval(index=0) {
-      let oneInterval = intervals[index];
+      let currInterval = workout.intervals[index];
+      titleEl.textContent = workout.title;
+      descEl.textContent = currInterval.desc;
       degrees = 0;
       count = 0;
       posX = canvas.width / 2;
@@ -32,11 +46,12 @@
       percent = 0;
       onePercent = 360 / 100;
       result = onePercent * 100;
-      arcMove(oneInterval, index);
+      arcMove(currInterval.time, index);
     };
 
     function arcMove(oneInterval, index){
       const totalCount = oneInterval * 5;
+      // console.log(count, totalCount, totalTimeCount, totalTime)
       arcInterval = setInterval (function() {
         degrees = (count / totalCount) * 360;
         overallDegrees = (overallCount / totalTimeCount) * 360;
@@ -61,7 +76,7 @@
         ctx.stroke();
         if( count > totalCount ){
           clearInterval(arcInterval);
-          if (intervals[index + 1]) {
+          if (workout.intervals[index + 1]) {
             newInterval(index + 1)
           } else {
             spanPercent.innerHTML = 'COMPLETE'
@@ -87,6 +102,7 @@
     }
 
     function start() {
+      retrieveInts()
       startBtn.style.display = 'none';
       pauseBtn.style.display = 'block';
       newInterval(0)
