@@ -1,5 +1,5 @@
 (function() {
-  var initTimer = function() {
+  const initTimer = function() {
     const canvas = document.getElementById('canvas');
     const startBtn = document.getElementById('start-btn');
     const pauseBtn = document.getElementById('pause-btn');
