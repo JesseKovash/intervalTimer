@@ -9,8 +9,6 @@
     const intervals = [10, 5, 15, 5];
     const totalTime = intervals.reduce((prev, num)=>prev + num);
     const totalTimeCount = totalTime * 5;
-    let currIndex;
-    let arcInterval;
     let overallDegrees = 0;
     let overallCount = 0;
     let posX = canvas.width / 2;
@@ -20,6 +18,8 @@
     let percent = 0;
     let onePercent = 360 / 100;
     let result = onePercent * 64;
+    let currIndex;
+    let arcInterval;
     let count;
     // ctx.lineCap = 'round';
 

@@ -35,7 +35,6 @@
 
     function saveToLocal(newInt) {
       let getPrev = JSON.parse(localStorage.allIntervals);
-      console.log('getPrev: ', getPrev)
       if (!getPrev || !Array.isArray(getPrev)) {
         localStorage.setItem('allIntervals', JSON.stringify([newInt]));
       } else {
@@ -43,7 +42,7 @@
         localStorage.setItem('allIntervals', getPrev);
       }
       intContainer.innerHTML = newIntHTML;
-      console.log(localStorage.allIntervals)
+      titleEl.value = '';
     }
 
     addIntBtn.addEventListener('click', (e)=>addNewInterval(e));
