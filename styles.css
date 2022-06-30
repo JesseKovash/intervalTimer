@@ -1,5 +1,31 @@
-:root {
+/* :root {
   background: #fff;
+} */
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+}
+
+form {
+  width: 350px;
+  padding: 10px;
+  display: none;
+  background-color: black;
+  color: limegreen;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+input {
+  background-color: limegreen;
+  border: none;
+  color: black;
 }
 
 span#percent {
@@ -18,6 +44,10 @@ span#percent {
   height: 300px;
 }
 
+#start-btn {
+  display: none;
+}
+
 #pause-btn {
   display: none;
 }
@@ -28,4 +58,36 @@ span#percent {
 
 #dropdown {
   display: none;
+}
+
+#title {
+  margin: 11px 0;
+}
+
+#add-interval-btn, #save-btn {
+  background-color: limegreen;
+  border: none;
+  width: 100px;
+  height: 40px;
+}
+
+#interval-container {
+  max-height: 400px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.desc-container, .time-container {
+  padding: 6px 0;
+}
+
+.one-int {
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid limegreen;
+}
+
+.form-btn-container {
+  display: flex;
+  justify-content: space-around;
 }

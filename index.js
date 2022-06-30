@@ -9,7 +9,7 @@
     const descEl = document.getElementById('int-desc');
     const ctx = canvas.getContext('2d');
     let intervals = [];
-    let intervalIndex = 0;
+    let intervalIndex = 1;
     let workout;
     let totalTime = 0;
     let totalTimeCount = totalTime * 5;

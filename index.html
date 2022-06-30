@@ -27,17 +27,21 @@
     <button id="pause-btn">Pause</button>
     <button id="resume-btn">Resume</button>
   </div>
-  <form>
+  <form id="form">
     <label for="title">Title</label>
     <input type="text" id="title" name="title">
     <div id="interval-container">
       <div class="one-int">
-        <label>Interval Description (optional)</label>
-        <input type="text" id="interval">
-        <label>Time in Minutes</label>
-        <input type="number" min="0" max="60" value="0">
-        <label>Time in Seconds</label>
-        <input type="number" min="0" max="59" value="0">
+        <div class="desc-container">
+          <label>Interval Description</label>
+          <input type="text" id="interval" value="">
+        </div>
+        <div class="time-container">
+          <label>Time in Minutes</label>
+          <input type="number" min="0" max="60" value="0">
+          <label>Time in Seconds</label>
+          <input type="number" min="0" max="59" value="0">
+        </div>
       </div>
     </div>
     <div class="form-btn-container">
