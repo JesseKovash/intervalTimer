@@ -29,12 +29,12 @@
   </div>
   <form id="form">
     <label for="title">Title</label>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" maxlength="25">
     <div id="interval-container">
       <div class="one-int">
         <div class="desc-container">
           <label>Interval Description</label>
-          <input type="text" id="interval" value="">
+          <input type="text" id="interval" maxlength="25" value="">
         </div>
         <div class="time-container">
           <label>Time in Minutes</label>
@@ -49,8 +49,10 @@
       <button id="save-btn" type="submit">Save</button>
     </div>
   </form>
-  <script src="./index.js"></script>
-  <script src="./menu.js"></script>
-  <script src="./createForm.js"></script>
+  <div id="saved-options"></div>
+  <script src="./index.js" type="module"></script>
+  <script src="./menu.js" type="module"></script>
+  <script src="./createForm.js" type="module"></script>
+  <script src="./savedIntervals.js" type="module"></script>
 </body>
 </html>

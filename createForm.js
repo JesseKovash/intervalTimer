@@ -1,6 +1,7 @@
 (function() {
 
   const formFunc = function() {
+    // import savedIntervals from "./savedIntervals.js";
     const addIntBtn = document.getElementById('add-interval-btn');
     const saveBtn = document.getElementById('save-btn');
     const intContainer = document.getElementById('interval-container');
@@ -12,7 +13,7 @@
        '<div class="one-int">\
           <div class="desc-container">\
             <label>Interval Description <label>\
-            <input type="text" id="interval" value="">\
+            <input type="text" id="interval" maxlength="25" value="">\
           </div>\
           <div class="time-container">\
             <label>Time in Minutes</label>\
@@ -57,6 +58,7 @@
       }
       intContainer.innerHTML = newIntHTML;
       titleEl.value = '';
+      savedIntervals()
     }
 
     addIntBtn.addEventListener('click', (e)=>addNewInterval(e));

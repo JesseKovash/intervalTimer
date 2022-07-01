@@ -91,3 +91,37 @@ span#percent {
   display: flex;
   justify-content: space-around;
 }
+
+.saved-int-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid limegreen;
+  align-items: center;
+  padding: 5px;
+  margin:  5px 0;
+}
+
+.saved-int-container p {
+  padding-left: 10px;
+  overflow-wrap: break-word;
+}
+
+.delete-saved {
+  background-color: red;
+  height: 50px
+}
+
+#saved-options {
+  display: none;
+  background-color: black;
+  color: limegreen;
+  font-size: 1.4rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-height: 400px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  width: 350px;
+  padding: 10px
+}
