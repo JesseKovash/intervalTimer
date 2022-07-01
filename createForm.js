@@ -1,7 +1,10 @@
 (function() {
 
+  if (!window.intervalTimerApp) {
+    window.intervalTimerApp = {};
+  }
+
   const formFunc = function() {
-    // import savedIntervals from "./savedIntervals.js";
     const addIntBtn = document.getElementById('add-interval-btn');
     const saveBtn = document.getElementById('save-btn');
     const intContainer = document.getElementById('interval-container');
@@ -58,7 +61,7 @@
       }
       intContainer.innerHTML = newIntHTML;
       titleEl.value = '';
-      savedIntervals()
+      window.intervalTimerApp.savedIntervals()
     }
 
     addIntBtn.addEventListener('click', (e)=>addNewInterval(e));

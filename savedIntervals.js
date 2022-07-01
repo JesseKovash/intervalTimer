@@ -1,6 +1,9 @@
 (function() {
 
-  // export function savedIntervals() {
+  if (!window.intervalTimerApp) {
+    window.intervalTimerApp = {};
+  }
+
   function savedIntervals() {
     const savedIntEl = document.getElementById('saved-options');
     const savedDropEl = document.getElementById('saved');
@@ -26,6 +29,7 @@
     };
 
     function renderSaved(ints) {
+      console.log(ints)
       savedIntEl.innerHTML = '';
       savedIntEl.append(...ints)
     };
@@ -38,6 +42,6 @@
   };
 
 
+  window.intervalTimerApp.savedIntervals = savedIntervals;
   document.addEventListener('DOMContentLoaded', savedIntervals);
-
 })();
