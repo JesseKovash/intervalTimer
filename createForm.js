@@ -38,12 +38,12 @@
 
     function saveIntervals(e) {
       e.preventDefault()
-      const allInts = document.querySelectorAll('.one-int');
+      const allInts = document.querySelectorAll('.one-int') || [];
       const formattedInts = [...allInts].map((oneInt) => {
-        console.log(oneInt.children[0].children[1])
+        // console.log(oneInt.children[0].children[1])
         return ({
-          desc: oneInt.children[0].children[1].value,
-          time: +oneInt.children[1].children[1].value * 60 + +oneInt.children[1].children[3].value
+          desc: oneInt.children[0].children[1]?.value,
+          time: +oneInt.children[1].children[1]?.value * 60 + +oneInt.children[1].children[3].value
         })
       });
       const finalInts = {title: titleEl.value, intervals: formattedInts};

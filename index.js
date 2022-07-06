@@ -27,8 +27,8 @@
     let count;
 
     function retrieveInts() {
-      intervals = JSON.parse(localStorage.allIntervals);
-      workout = intervals[intervalIndex];
+      workout = JSON.parse(localStorage.currentInterval);
+      intervals = workout.intervals;
       totalTime = workout?.intervals?.reduce((prev, num)=>{
         return prev + num.time
       }, 0) || 0;
@@ -51,7 +51,6 @@
 
     function arcMove(oneInterval, index){
       const totalCount = oneInterval * 5;
-      // console.log(count, totalCount, totalTimeCount, totalTime)
       arcInterval = setInterval (function() {
         degrees = (count / totalCount) * 360;
         overallDegrees = (overallCount / totalTimeCount) * 360;
@@ -116,7 +115,7 @@
     }
 
     function resume() {
-      let oneInterval = intervals[currIndex];
+      let oneInterval = intervals[currIndex].time;
       resumeBtn.style.display = 'none';
       pauseBtn.style.display = 'block';
       arcMove(oneInterval, currIndex);
