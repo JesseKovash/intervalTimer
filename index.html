@@ -9,7 +9,10 @@
 </head>
 <body>
   <div class="dropdown-container">
-    <button id="dropdown-btn">Drop</button>
+    <svg id="dropdown-btn" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <!-- <button id="dropdown-btn">Drop</button> -->
     <div id="dropdown">
       <div id="create">Create</div>
       <div id="saved">Saved</div>
@@ -22,7 +25,7 @@
     <canvas id="canvas" width="300" height="300"></canvas>
     <span id="percent"></span>
   </div>
-  <div>
+  <div id="canvas-btn-container">
     <button id="start-btn">Start</button>
     <button id="pause-btn">Pause</button>
     <button id="resume-btn">Resume</button>

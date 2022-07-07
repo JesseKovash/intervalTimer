@@ -27,7 +27,6 @@
     let count;
 
     function retrieveInts() {
-      console.log(localStorage.currentInterval)
       workout = JSON.parse(localStorage.currentInterval);
       intervals = workout.intervals;
       totalTime = workout?.intervals?.reduce((prev, num)=>{
