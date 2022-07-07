@@ -5,6 +5,7 @@
   }
 
   function savedIntervals() {
+    const cancelWorkout = window.intervalTimerApp.cancelWorkout;
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const spanPercent = document.getElementById('percent');
@@ -42,8 +43,12 @@
     };
 
     function renderSaved(ints) {
+      const closeEl = '<svg id="close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"\ stroke="currentColor" stroke-width="2">\
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />\
+    </svg>';
       savedIntEl.innerHTML = '';
       savedIntEl.append(...ints)
+      savedIntEl.insertAdjacentHTML('beforeend', closeEl);
     };
 
     function showSavedOptions() {
@@ -66,16 +71,6 @@
 
     function deleteCurrentInterval(e) {
       console.log('delete: ', e.target)
-    };
-
-    function cancelWorkout() {
-      cancelBtnEl.style.display = 'none';
-      startBtnEl.style.display = 'none';
-      resumeBtnEl.style.display = 'none';
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      spanPercent.textContent = '';
-      titleEl.textContent = '';
-      descEl.textContent = '';
     };
 
     savedDropEl.addEventListener('click', showSavedOptions);
