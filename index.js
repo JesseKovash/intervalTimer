@@ -1,13 +1,13 @@
 (function() {
   const initTimer = function() {
     const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
     const startBtn = document.getElementById('start-btn');
     const pauseBtn = document.getElementById('pause-btn');
     const resumeBtn = document.getElementById('resume-btn');
     const spanPercent = document.getElementById('percent');
     const titleEl = document.getElementById('int-title');
     const descEl = document.getElementById('int-desc');
-    const ctx = canvas.getContext('2d');
     let intervals = [];
     let intervalIndex = 1;
     let workout;
@@ -27,6 +27,7 @@
     let count;
 
     function retrieveInts() {
+      console.log(localStorage.currentInterval)
       workout = JSON.parse(localStorage.currentInterval);
       intervals = workout.intervals;
       totalTime = workout?.intervals?.reduce((prev, num)=>{

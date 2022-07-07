@@ -1,0 +1,24 @@
+{
+  "name": "intervaltimer",
+  "version": "1.0.0",
+  "description": "Interval Timer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesseKovash/intervalTimer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesseKovash/intervalTimer/issues"
+  },
+  "homepage": "https://github.com/JesseKovash/intervalTimer#readme",
+  "type": "module",
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}

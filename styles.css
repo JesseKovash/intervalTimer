@@ -56,6 +56,10 @@ span#percent {
   display: none;
 }
 
+#cancel-btn {
+  display: none;
+}
+
 #dropdown {
   display: none;
 }
