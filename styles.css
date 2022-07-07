@@ -18,9 +18,10 @@ form {
   background-color: #284B63;
   color: #D9D9D9;
   position: absolute;
-  left: 0;
-  top: 0;
   border-radius: 5px;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 input {
@@ -64,12 +65,24 @@ span#percent {
   min-height: 116px;
 }
 
-#close {
+.close-btn {
   width: 25px;
   height: 25px;
   position: absolute;
-  top: 3px;
-  left: 88vw;
+  top: 4%;
+  left: 90%;
+  z-index: 999;
+  color: #D9D9D9;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.close {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 #start-btn, #pause-btn, #resume-btn, #cancel-btn {
@@ -166,20 +179,6 @@ span#percent {
   padding: 10px 0;
 }
 
-.saved-int-container {
-  display: flex;
-  justify-content: space-between;
-  border: 2px solid #3C6E71;
-  align-items: center;
-  padding: 5px;
-  margin:  5px 0;
-}
-
-.saved-int-container p {
-  padding-left: 10px;
-  overflow-wrap: break-word;
-}
-
 .delete-saved {
   background-color: #3C6E71;
   color: #D9D9D9;
@@ -196,18 +195,36 @@ span#percent {
 
 #saved-options {
   display: none;
-  background-color: #284B63;
   color: #D9D9D9;
   font-size: 1.4rem;
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0);
   max-height: 400px;
   overflow: scroll;
   scroll-behavior: smooth;
   width: 350px;
-  padding: 25px 10px 10px 10px
+  padding: 50px 10px 10px 10px;
+  background-color: #284B63;
 }
+
+.saved-int-container {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #3C6E71;
+  border-radius: 5px;
+  align-items: center;
+  padding: 5px;
+  margin:  5px 0;
+  background-color: #284B63;
+}
+
+.saved-int-container p {
+  padding-left: 10px;
+  overflow-wrap: break-word;
+}
+
 
 #canvas-btn-container {
   display: flex;

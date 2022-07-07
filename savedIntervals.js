@@ -6,6 +6,8 @@
 
   function savedIntervals() {
     const cancelWorkout = window.intervalTimerApp.cancelWorkout;
+    const formEl = document.querySelector('form');
+    const savedOptionsEl = document.getElementById('saved-options');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const spanPercent = document.getElementById('percent');
@@ -43,19 +45,34 @@
     };
 
     function renderSaved(ints) {
-      const closeEl = '<svg id="close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"\ stroke="currentColor" stroke-width="2">\
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />\
-    </svg>';
+      const closeEl = '<button type="button" class="close-btn" data-action="close-saved">\
+                        <svg id="close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 close" fill="none" viewBox="0 0 24 24"\ stroke="currentColor" stroke-width="2">\
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />\
+                        </svg>\
+                      </button>';
       savedIntEl.innerHTML = '';
       savedIntEl.append(...ints)
       savedIntEl.insertAdjacentHTML('beforeend', closeEl);
+      console.log(document.getElementById('close'))
+      const closeElems = document.querySelectorAll('[data-action="close-saved"]');
+      closeElems.forEach((elem) => {
+        elem.addEventListener('click', closeCurrent);
+      });
     };
 
     function showSavedOptions() {
       savedIntEl.style.display = 'block';
+      dropDownEl.style.display = 'none';
     };
 
+    function closeCurrent() {
+      console.log('inclosecurrent')
+      savedOptionsEl.style.display = 'none';
+      formEl.style.display = 'none';
+    }
+
     function setCurrentInterval(e) {
+      console.log(e.target)
       const targetClassIndex = +e.target.classList[1].substring(5);
       localStorage.setItem('currentInterval', JSON.stringify(intervals[targetClassIndex]));
       savedIntEl.style.display = 'none';
@@ -63,7 +80,6 @@
       spanPercent.textContent = '';
       titleEl.textContent = '';
       descEl.textContent = '';
-      dropDownEl.style.display = 'none';
       cancelBtnEl.style.display = 'block';
       startBtnEl.style.display = 'block';
       resumeBtnEl.style.display = 'none';
