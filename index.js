@@ -86,7 +86,10 @@
           if (workout.intervals[index + 1]) {
             newInterval(index + 1)
           } else {
+            hideButtons(true, true, true, true)
+            hideElement(canvas)
             spanPercent.innerHTML = 'COMPLETE'
+            setTimeout(()=>cancelWorkout(), 5000)
           }
 
         };
