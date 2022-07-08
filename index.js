@@ -13,6 +13,7 @@
     const help = document.getElementById('help');
     const helpEl = document.getElementById('help-container');
     const dropDownEl = document.getElementById('dropdown');
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     let intervals = [];
     let intervalIndex = 1;
     let workout;
@@ -164,9 +165,19 @@
       hideElement(dropDownEl)
     }
 
+    function switchTheme(e) {
+      if (e.target.checked) {
+          document.documentElement.setAttribute('data-theme', 'light');
+      }
+      else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+
     startBtn.addEventListener('click', start);
     resumeBtn.addEventListener('click', resume);
-    help.addEventListener('click', ()=>showElement(helpEl))
+    help.addEventListener('click', ()=>showElement(helpEl));
+    toggleSwitch.addEventListener('change', switchTheme, false);
     window.intervalTimerApp.cancelWorkout = cancelWorkout;
     window.intervalTimerApp.hideButtons = hideButtons;
     window.intervalTimerApp.showButtons = showButtons;
