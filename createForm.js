@@ -12,19 +12,7 @@
     const formEl = document.getElementById('form');
     const formCreate = document.getElementById('create');
     const dropEl = document.getElementById('dropdown');
-    const newIntHTML =
-       '<div class="one-int">\
-          <div class="desc-container">\
-            <label>Interval Description <label>\
-            <input type="text" id="interval" maxlength="25" value="">\
-          </div>\
-          <div class="time-container">\
-            <label>Time in Minutes</label>\
-            <input type="number" min="0" max="60" value="0">\
-            <label>Time in Seconds</label>\
-            <input type="number" min="0" max="59" value="0">\
-          </div>\
-        </div>';
+    const newIntTemplate = document.getElementById('one-int-template');
 
     function showForm() {
       formEl.style.display = 'block';
@@ -33,14 +21,16 @@
 
     function addNewInterval(e) {
       e.preventDefault()
-      intContainer.insertAdjacentHTML('beforeend', newIntHTML);
+      const clone = newIntTemplate.content.cloneNode(true);
+      intContainer.appendChild(clone)
     };
 
     function saveIntervals(e) {
       e.preventDefault()
       const allInts = document.querySelectorAll('.one-int') || [];
+      allInts.forEach((one)=>console.log(one.children[0].children[1].value))
+
       const formattedInts = [...allInts].map((oneInt) => {
-        // console.log(oneInt.children[0].children[1])
         return ({
           desc: oneInt.children[0].children[1]?.value,
           time: +oneInt.children[1].children[1]?.value * 60 + +oneInt.children[1].children[3].value

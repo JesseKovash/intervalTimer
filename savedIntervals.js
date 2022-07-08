@@ -53,7 +53,6 @@
       savedIntEl.innerHTML = '';
       savedIntEl.append(...ints)
       savedIntEl.insertAdjacentHTML('beforeend', closeEl);
-      console.log(document.getElementById('close'))
       const closeElems = document.querySelectorAll('[data-action="close-saved"]');
       closeElems.forEach((elem) => {
         elem.addEventListener('click', closeCurrent);
@@ -66,7 +65,6 @@
     };
 
     function closeCurrent() {
-      console.log('inclosecurrent')
       savedOptionsEl.style.display = 'none';
       formEl.style.display = 'none';
     }

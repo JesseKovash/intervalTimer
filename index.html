@@ -59,6 +59,20 @@
       <button id="save-btn" type="submit">Save</button>
     </div>
   </form>
+  <template id="one-int-template">
+    <div class="one-int">
+      <div class="desc-container">
+        <label>Interval Description</label>
+        <input type="text" id="interval" maxlength="25" value="">
+      </div>
+      <div class="time-container">
+        <label>Time in Minutes</label>
+        <input type="number" min="0" max="60" value="0">
+        <label>Time in Seconds</label>
+        <input type="number" min="0" max="59" value="0">
+      </div>
+    </div>
+  </template>
   <div id="saved-options">
   </div>
   <script src="./index.js"></script>

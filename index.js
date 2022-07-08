@@ -43,6 +43,7 @@
       overallCount === 0 ? overallCount = 0 : overallCount--;
       let currInterval = workout.intervals[index];
       titleEl.textContent = workout.title;
+      console.log(workout)
       descEl.textContent = currInterval.desc;
       degrees = 0;
       count = 0;
