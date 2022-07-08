@@ -13,6 +13,7 @@
     const help = document.getElementById('help');
     const helpEl = document.getElementById('help-container');
     const dropDownEl = document.getElementById('dropdown');
+    const bannerEl = document.getElementById('banner');
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('intervalAppTheme') ? localStorage.getItem('intervalAppTheme') : null;
     let intervals = [];
@@ -68,6 +69,7 @@
     };
 
     function arcMove(oneInterval, index){
+
       const totalCount = oneInterval * 5;
       arcInterval = setInterval (function() {
         degrees = (count / totalCount) * 360;
@@ -113,7 +115,10 @@
             hideButtons(true, true, true, true)
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             spanPercent.innerHTML = 'COMPLETE'
-            setTimeout(()=>cancelWorkout(), 5000)
+            setTimeout(()=>{
+              cancelWorkout()
+              showElement(bannerEl)
+            }, 5000)
           }
 
         };
@@ -146,6 +151,7 @@
       clearInterval(arcInterval)
       hideButtons(true, true, true, true)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      showElement(bannerEl)
       spanPercent.textContent = '';
       titleEl.textContent = '';
       descEl.textContent = '';

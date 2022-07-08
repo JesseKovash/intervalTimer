@@ -12,7 +12,7 @@
     const showEl = window.intervalTimerApp.showElement;
     const formEl = document.querySelector('form');
     const helpEl = document.getElementById('help-container');
-    // const savedOptionsEl = document.getElementById('saved-options');
+    const bannerEl = document.getElementById('banner');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const spanPercent = document.getElementById('percent');
@@ -80,6 +80,7 @@
       const targetClassIndex = +e.target.classList[1].substring(5);
       localStorage.setItem('currentInterval', JSON.stringify(intervals[targetClassIndex]));
       hideEl(savedIntEl)
+      hideEl(bannerEl)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       spanPercent.textContent = '';
       titleEl.textContent = '';

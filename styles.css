@@ -111,6 +111,17 @@ span#percent {
   fill: currentColor;
 }
 
+#banner {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  font-size: 3.2rem;
+}
+
+#clock {
+  height: 275px;
+  width: 275px;
+}
+
 #start-btn, #pause-btn, #resume-btn, #cancel-btn {
   display: none;
   background-color: var(--primary-color);
@@ -283,7 +294,7 @@ span#percent {
   display: flex;
   align-items: center;
   position: absolute;
-  left: 84%;
+  right: 8px;
   top: 1%;
 }
 .theme-switch {
