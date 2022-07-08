@@ -25,6 +25,8 @@
       e.preventDefault()
       const clone = newIntTemplate.content.cloneNode(true);
       intContainer.appendChild(clone)
+      const lastInt = intContainer.children[intContainer.children.length - 1].children[0].children[1];
+      lastInt.focus()
     };
 
     function saveIntervals(e) {
