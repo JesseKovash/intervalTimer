@@ -208,7 +208,7 @@
           document.documentElement.setAttribute('data-theme', 'dark');
           localStorage.setItem('intervalAppTheme', 'dark');
       }
-    }
+    };
 
     startBtn.addEventListener('click', start);
     resumeBtn.addEventListener('click', resume);
