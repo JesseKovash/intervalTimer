@@ -12,7 +12,7 @@
     const showEl = window.intervalTimerApp.showElement;
     const formEl = document.querySelector('form');
     const helpEl = document.getElementById('help-container');
-    const savedOptionsEl = document.getElementById('saved-options');
+    // const savedOptionsEl = document.getElementById('saved-options');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const spanPercent = document.getElementById('percent');
@@ -25,7 +25,7 @@
     const cancelBtnEl = document.getElementById('cancel-btn');
     const dropDownEl = document.getElementById('dropdown');
     const intervals = JSON.parse(localStorage.allIntervals);
-    const intervalHTML = intervals.map((oneInt, index)=> {
+    let intervalHTML = intervals.map((oneInt, index)=> {
       return formatInterval(oneInt, index);
     });
     renderSaved(intervalHTML)
@@ -50,6 +50,7 @@
     };
 
     function renderSaved(ints) {
+      console.log(ints)
       const closeEl = '<button type="button" class="close-btn" data-action="close-saved">\
                         <svg id="close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 close" fill="none" viewBox="0 0 24 24"\ stroke="currentColor" stroke-width="2">\
                           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />\
@@ -71,7 +72,7 @@
 
     function closeCurrent() {
       hideEl(helpEl)
-      hideEl(savedOptionsEl)
+      hideEl(savedIntEl)
       hideEl(formEl)
     }
 
@@ -91,7 +92,10 @@
       intervals.splice(1,1)
       localStorage.setItem('allIntervals', JSON.stringify(intervals))
       hideEl(savedIntEl)
-      renderSaved(intervals)
+      intervalHTML = intervals.map((oneInt, index)=> {
+        return formatInterval(oneInt, index);
+      });
+      renderSaved(intervalHTML)
     };
 
     savedDropEl.addEventListener('click', showSavedOptions);
