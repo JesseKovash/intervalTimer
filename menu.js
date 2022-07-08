@@ -1,7 +1,6 @@
 window.onload = function() {
   const dropDown = document.getElementById('dropdown');
   const dropDownBtn = document.getElementById('dropdown-btn');
-  const intervals = JSON.parse(localStorage.allIntervals);
 
   function showOptions() {
     const currDisplay = dropDown.style.display;

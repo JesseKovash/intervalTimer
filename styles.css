@@ -105,10 +105,16 @@ span#percent {
   margin: 0;
 }
 
+.close-btn:hover {
+  background-color: var(--contrast-color);
+  color: var(--secondary-color);
+  border-radius: 50%;
+}
+
 .close {
   width: 100%;
   height: 100%;
-  fill: currentColor;
+  fill: var(--contrast-color);
 }
 
 #banner {
@@ -122,11 +128,14 @@ span#percent {
   width: 275px;
 }
 
+.controls {
+  stroke-width: 1;
+}
+
 #start-btn, #pause-btn, #resume-btn, #cancel-btn {
   display: none;
-  background-color: var(--primary-color);
-  border: var(--contrast-color) 1px solid;
-  border-radius: 5px;
+  background-color: transparent;
+  border: none;
   color: var(--contrast-color);
   width: 120px;
   height: 60px;
@@ -144,7 +153,6 @@ span#percent {
   font-size: 1.6rem;
   padding: 10px 10px;
   width: 25vw;
-  /* background-color: var(--contrast-color); */
   background-color: var(--secondary-color);
   color: var(--bg-color);
   border-radius: 5px;
@@ -219,18 +227,22 @@ span#percent {
 }
 
 .delete-saved {
-  background-color: var(--primary-color);
   color: var(--contrast-color);
-  border: 1px solid var(--contrast-color);
-  border-radius: 5px;
+  border: none;
+  background-color: transparent;
   height: 50px;
   margin-right: 5px;
   z-index: 1;
 }
 
+.garbage {
+  width: 40px;
+}
+
 .delete-saved:hover {
   background-color: var(--contrast-color);
   color: var(--primary-color);
+  border-radius: 50%;
 }
 
 #saved-options {
@@ -274,6 +286,8 @@ span#percent {
 #canvas-btn-container {
   display: flex;
   justify-content: space-around;
+  max-width: 550px;
+  margin: 0 auto;
 }
 
 #help-container {

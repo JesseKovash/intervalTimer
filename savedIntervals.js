@@ -8,8 +8,8 @@
     const cancelWorkout = window.intervalTimerApp.cancelWorkout;
     const showButtons = window.intervalTimerApp.showButtons;
     const hideButtons = window.intervalTimerApp.hideButtons;
-    const hideEl = window.intervalTimerApp.hideElement;
-    const showEl = window.intervalTimerApp.showElement;
+    const hideElement = window.intervalTimerApp.hideElement;
+    const showElement = window.intervalTimerApp.showElement;
     const formEl = document.querySelector('form');
     const helpEl = document.getElementById('help-container');
     const bannerEl = document.getElementById('banner');
@@ -31,6 +31,9 @@
     renderSaved(intervalHTML)
 
     function formatInterval(int, index) {
+      const garbageIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="garbage h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">\
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+    </svg>';
       let intContainer = document.createElement('div');
       let intOption = document.createElement('p');
       let deleteBtn = document.createElement('button');
@@ -40,7 +43,7 @@
       intContainer.classList.add(`index${index}`);
       deleteBtn.classList.add(`index${index}`);
       intOption.classList.add(`index${index}`);
-      deleteBtn.textContent = 'DELETE';
+      deleteBtn.innerHTML = garbageIcon;
       intOption.textContent = int.title;
       intContainer.append(intOption);
       intContainer.append(deleteBtn);
@@ -50,7 +53,6 @@
     };
 
     function renderSaved(ints) {
-      console.log(ints)
       const closeEl = '<button type="button" class="close-btn" data-action="close-saved">\
                         <svg id="close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 close" fill="none" viewBox="0 0 24 24"\ stroke="currentColor" stroke-width="2">\
                           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />\
@@ -66,21 +68,23 @@
     };
 
     function showSavedOptions() {
-      showEl(savedIntEl)
-      hideEl(dropDownEl)
+      showElement(savedIntEl)
+      hideElement(dropDownEl)
+      hideElement(helpEl)
+      hideElement(formEl)
     };
 
     function closeCurrent() {
-      hideEl(helpEl)
-      hideEl(savedIntEl)
-      hideEl(formEl)
+      hideElement(helpEl)
+      hideElement(savedIntEl)
+      hideElement(formEl)
     }
 
     function setCurrentInterval(e) {
       const targetClassIndex = +e.target.classList[1].substring(5);
       localStorage.setItem('currentInterval', JSON.stringify(intervals[targetClassIndex]));
-      hideEl(savedIntEl)
-      hideEl(bannerEl)
+      hideElement(savedIntEl)
+      hideElement(bannerEl)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       spanPercent.textContent = '';
       titleEl.textContent = '';
@@ -93,7 +97,7 @@
       const targetClassIndex = +e.target.classList[1].substring(5);
       intervals.splice(targetClassIndex,1)
       localStorage.setItem('allIntervals', JSON.stringify(intervals))
-      hideEl(savedIntEl)
+      hideElement(savedIntEl)
       intervalHTML = intervals.map((oneInt, index)=> {
         return formatInterval(oneInt, index);
       });

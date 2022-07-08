@@ -5,8 +5,8 @@
   }
 
   const formFunc = function() {
-    const hideEl = window.intervalTimerApp.hideElement;
-    const showEl = window.intervalTimerApp.showElement;
+    const hideElement = window.intervalTimerApp.hideElement;
+    const showElement = window.intervalTimerApp.showElement;
     const addIntBtn = document.getElementById('add-interval-btn');
     const saveBtn = document.getElementById('save-btn');
     const intContainer = document.getElementById('interval-container');
@@ -15,10 +15,14 @@
     const formCreate = document.getElementById('create');
     const dropEl = document.getElementById('dropdown');
     const newIntTemplate = document.getElementById('one-int-template');
+    const savedIntEl = document.getElementById('saved-options');
+    const helpEl = document.getElementById('help-container');
 
     function showForm() {
-      showEl(formEl)
-      hideEl(dropdown)
+      showElement(formEl)
+      hideElement(dropdown)
+      hideElement(helpEl)
+      hideElement(savedIntEl)
     }
 
     function addNewInterval(e) {
@@ -39,7 +43,7 @@
         })
       });
       const finalInts = {title: titleEl.value, intervals: formattedInts};
-      hideEl(formEl)
+      hideElement(formEl)
       saveToLocal(finalInts)
     };
 
