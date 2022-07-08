@@ -4,6 +4,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   color: #D9D9D9;
+  font-family: sans-serif;
 }
 
 body {
@@ -36,6 +37,11 @@ input {
 
 h1 {
   font-size: 3rem;
+}
+
+li {
+  padding: 10px 0;
+  font-size: 1.4rem;
 }
 
 span#percent {
@@ -186,6 +192,7 @@ span#percent {
   border-radius: 5px;
   height: 50px;
   margin-right: 5px;
+  z-index: 1;
 }
 
 .delete-saved:hover {
@@ -225,8 +232,25 @@ span#percent {
   overflow-wrap: break-word;
 }
 
+.saved-option {
+  width: 70%;
+}
+
 
 #canvas-btn-container {
   display: flex;
   justify-content: space-around;
+}
+
+#help-container {
+    width: 350px;
+    padding: 30px 10px 10px 10px;
+    display: none;
+    background-color: #284B63;
+    color: #D9D9D9;
+    position: absolute;
+    border-radius: 5px;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0);
 }

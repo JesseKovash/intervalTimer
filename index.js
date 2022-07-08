@@ -10,6 +10,9 @@
     const spanPercent = document.getElementById('percent');
     const titleEl = document.getElementById('int-title');
     const descEl = document.getElementById('int-desc');
+    const help = document.getElementById('help');
+    const helpEl = document.getElementById('help-container');
+    const dropDownEl = document.getElementById('dropdown');
     let intervals = [];
     let intervalIndex = 1;
     let workout;
@@ -43,7 +46,6 @@
       overallCount === 0 ? overallCount = 0 : overallCount--;
       let currInterval = workout.intervals[index];
       titleEl.textContent = workout.title;
-      console.log(workout)
       descEl.textContent = currInterval.desc;
       degrees = 0;
       count = 0;
@@ -149,9 +151,24 @@
       if (cancel) cancelBtn.style.display = 'block';
     }
 
+    function hideElement(element) {
+      element.style.display = 'none';
+    }
+
+    function showElement(element) {
+      element.style.display = 'block';
+      hideElement(dropDownEl)
+    }
+
     startBtn.addEventListener('click', start);
     resumeBtn.addEventListener('click', resume);
-    window.intervalTimerApp.cancelWorkout = cancelWorkout;  };
+    help.addEventListener('click', ()=>showElement(helpEl))
+    window.intervalTimerApp.cancelWorkout = cancelWorkout;
+    window.intervalTimerApp.hideButtons = hideButtons;
+    window.intervalTimerApp.showButtons = showButtons;
+    window.intervalTimerApp.hideElement = hideElement;
+    window.intervalTimerApp.showElement = showElement;
+  };
 
   document.addEventListener('DOMContentLoaded', initTimer);
 })();

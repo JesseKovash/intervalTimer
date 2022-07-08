@@ -6,7 +6,12 @@
 
   function savedIntervals() {
     const cancelWorkout = window.intervalTimerApp.cancelWorkout;
+    const showButtons = window.intervalTimerApp.showButtons;
+    const hideButtons = window.intervalTimerApp.hideButtons;
+    const hideEl = window.intervalTimerApp.hideElement;
+    const showEl = window.intervalTimerApp.showElement;
     const formEl = document.querySelector('form');
+    const helpEl = document.getElementById('help-container');
     const savedOptionsEl = document.getElementById('saved-options');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -39,7 +44,7 @@
       intOption.textContent = int.title;
       intContainer.append(intOption);
       intContainer.append(deleteBtn);
-      intContainer.addEventListener('click', (e)=>setCurrentInterval(e));
+      intOption.addEventListener('click', (e)=>setCurrentInterval(e));
       deleteBtn.addEventListener('click', (e)=>deleteCurrentInterval(e));
       return intContainer
     };
@@ -50,7 +55,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />\
                         </svg>\
                       </button>';
-      savedIntEl.innerHTML = '';
+      ints.length === 0 ? savedIntEl.innerHTML = 'No Workouts Saved' : savedIntEl.innerHTML = '';
       savedIntEl.append(...ints)
       savedIntEl.insertAdjacentHTML('beforeend', closeEl);
       const closeElems = document.querySelectorAll('[data-action="close-saved"]');
@@ -60,31 +65,33 @@
     };
 
     function showSavedOptions() {
-      savedIntEl.style.display = 'block';
-      dropDownEl.style.display = 'none';
+      showEl(savedIntEl)
+      hideEl(dropDownEl)
     };
 
     function closeCurrent() {
-      savedOptionsEl.style.display = 'none';
-      formEl.style.display = 'none';
+      hideEl(helpEl)
+      hideEl(savedOptionsEl)
+      hideEl(formEl)
     }
 
     function setCurrentInterval(e) {
-      console.log(e.target)
       const targetClassIndex = +e.target.classList[1].substring(5);
       localStorage.setItem('currentInterval', JSON.stringify(intervals[targetClassIndex]));
-      savedIntEl.style.display = 'none';
+      hideEl(savedIntEl)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       spanPercent.textContent = '';
       titleEl.textContent = '';
       descEl.textContent = '';
-      cancelBtnEl.style.display = 'block';
-      startBtnEl.style.display = 'block';
-      resumeBtnEl.style.display = 'none';
+      showButtons(true, false, false, true)
+      hideButtons(false, false, true)
     };
 
     function deleteCurrentInterval(e) {
-      console.log('delete: ', e.target)
+      intervals.splice(1,1)
+      localStorage.setItem('allIntervals', JSON.stringify(intervals))
+      hideEl(savedIntEl)
+      renderSaved(intervals)
     };
 
     savedDropEl.addEventListener('click', showSavedOptions);

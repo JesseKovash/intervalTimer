@@ -5,6 +5,8 @@
   }
 
   const formFunc = function() {
+    const hideEl = window.intervalTimerApp.hideElement;
+    const showEl = window.intervalTimerApp.showElement;
     const addIntBtn = document.getElementById('add-interval-btn');
     const saveBtn = document.getElementById('save-btn');
     const intContainer = document.getElementById('interval-container');
@@ -15,8 +17,8 @@
     const newIntTemplate = document.getElementById('one-int-template');
 
     function showForm() {
-      formEl.style.display = 'block';
-      dropdown.style.display = 'none';
+      showEl(formEl)
+      hideEl(dropdown)
     }
 
     function addNewInterval(e) {
@@ -28,8 +30,6 @@
     function saveIntervals(e) {
       e.preventDefault()
       const allInts = document.querySelectorAll('.one-int') || [];
-      allInts.forEach((one)=>console.log(one.children[0].children[1].value))
-
       const formattedInts = [...allInts].map((oneInt) => {
         return ({
           desc: oneInt.children[0].children[1]?.value,
@@ -37,11 +37,14 @@
         })
       });
       const finalInts = {title: titleEl.value, intervals: formattedInts};
-      formEl.style.display = 'none';
+      hideEl(formEl)
       saveToLocal(finalInts)
     };
 
     function saveToLocal(newInt) {
+      const clone = newIntTemplate.content.cloneNode(true);
+      intContainer.innerHTML = '';
+      intContainer.appendChild(clone)
       let getPrev = JSON.parse(localStorage.allIntervals);
       if (!getPrev || !Array.isArray(getPrev)) {
         localStorage.setItem('allIntervals', JSON.stringify([newInt]));
@@ -49,7 +52,6 @@
         getPrev = JSON.stringify(getPrev.concat(newInt));
         localStorage.setItem('allIntervals', getPrev);
       }
-      intContainer.innerHTML = newIntHTML;
       titleEl.value = '';
       window.intervalTimerApp.savedIntervals()
     }
