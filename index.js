@@ -81,18 +81,6 @@
         ctx.lineWidth = '10';
         ctx.arc( posX, posY, 70, (Math.PI/180) * 270, (Math.PI/180) * (270 + degrees) );
         ctx.stroke();
-        if( count > totalCount ){
-          clearInterval(arcInterval);
-          if (workout.intervals[index + 1]) {
-            newInterval(index + 1)
-          } else {
-            hideButtons(true, true, true, true)
-            hideElement(canvas)
-            spanPercent.innerHTML = 'COMPLETE'
-            setTimeout(()=>cancelWorkout(), 5000)
-          }
-
-        };
 
         //background on overallProgress
         ctx.beginPath();
@@ -106,6 +94,19 @@
         ctx.lineWidth = '20';
         ctx.arc( posX, posY, 120, (Math.PI/180) * 270, (Math.PI/180) * (270 + overallDegrees) );
         ctx.stroke();
+
+        if( count > totalCount ){
+          clearInterval(arcInterval);
+          if (workout.intervals[index + 1]) {
+            newInterval(index + 1)
+          } else {
+            hideButtons(true, true, true, true)
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            spanPercent.innerHTML = 'COMPLETE'
+            setTimeout(()=>cancelWorkout(), 5000)
+          }
+
+        };
       }, fps);
       pauseBtn.addEventListener('click', () => pause(index));
     }

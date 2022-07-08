@@ -89,7 +89,8 @@
     };
 
     function deleteCurrentInterval(e) {
-      intervals.splice(1,1)
+      const targetClassIndex = +e.target.classList[1].substring(5);
+      intervals.splice(targetClassIndex,1)
       localStorage.setItem('allIntervals', JSON.stringify(intervals))
       hideEl(savedIntEl)
       intervalHTML = intervals.map((oneInt, index)=> {
