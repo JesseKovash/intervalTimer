@@ -14,6 +14,7 @@
     const helpEl = document.getElementById('help-container');
     const dropDownEl = document.getElementById('dropdown');
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('intervalAppTheme') ? localStorage.getItem('intervalAppTheme') : null;
     let intervals = [];
     let intervalIndex = 1;
     let workout;
@@ -31,6 +32,14 @@
     let currIndex;
     let arcInterval;
     let count;
+
+    //set Theme
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'light') {
+          toggleSwitch.checked = true;
+      }
+  }
 
     function retrieveInts() {
       workout = JSON.parse(localStorage.currentInterval);
@@ -168,9 +177,11 @@
     function switchTheme(e) {
       if (e.target.checked) {
           document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('intervalAppTheme', 'light');
       }
       else {
           document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('intervalAppTheme', 'dark');
       }
     }
 

@@ -133,7 +133,8 @@ span#percent {
   font-size: 1.6rem;
   padding: 10px 10px;
   width: 25vw;
-  background-color: var(--contrast-color);
+  /* background-color: var(--contrast-color); */
+  background-color: var(--secondary-color);
   color: var(--bg-color);
   border-radius: 5px;
   position: absolute;
@@ -149,6 +150,7 @@ span#percent {
 
 #create, #saved, #help {
   padding: 5px;
+  color: var(--contrast-color);
 }
 
 #create:hover, #saved:hover, #help:hover {
@@ -234,6 +236,7 @@ span#percent {
   width: 350px;
   padding: 50px 10px 10px 10px;
   background-color: var(--secondary-color);
+  text-align: center;
 }
 
 .saved-int-container {
