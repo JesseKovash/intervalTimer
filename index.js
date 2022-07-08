@@ -16,6 +16,9 @@
     const savedIntEl = document.getElementById('saved-options');
     const dropDownEl = document.getElementById('dropdown');
     const bannerEl = document.getElementById('banner');
+    const startAudio = document.getElementById('start-audio');
+    const nextAudio = document.getElementById('next-audio');
+    const completeAudio = document.getElementById('complete-audio');
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('intervalAppTheme') ? localStorage.getItem('intervalAppTheme') : null;
     let intervals = [];
@@ -42,7 +45,7 @@
       if (currentTheme === 'light') {
           toggleSwitch.checked = true;
       }
-  }
+    }
 
     function retrieveInts() {
       workout = JSON.parse(localStorage.currentInterval);
@@ -67,11 +70,18 @@
       percent = 0;
       onePercent = 360 / 100;
       result = onePercent * 100;
-      arcMove(currInterval.time, index);
+      if (index === 0) {
+        startAudio.play()
+        setTimeout(()=> {
+          arcMove(currInterval.time, index);
+        }, 1900)
+      } else {
+        arcMove(currInterval.time, index);
+      }
     };
 
     function arcMove(oneInterval, index){
-
+      if (index > 0) nextAudio.play()
       const totalCount = oneInterval * 5;
       arcInterval = setInterval (function() {
         degrees = (count / totalCount) * 360;
@@ -114,6 +124,7 @@
           if (workout.intervals[index + 1]) {
             newInterval(index + 1)
           } else {
+            completeAudio.play()
             hideButtons(true, true, true, true)
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             spanPercent.innerHTML = 'COMPLETE'

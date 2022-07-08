@@ -81,6 +81,7 @@
     }
 
     function setCurrentInterval(e) {
+      cancelWorkout()
       const targetClassIndex = +e.target.classList[1].substring(5);
       localStorage.setItem('currentInterval', JSON.stringify(intervals[targetClassIndex]));
       hideElement(savedIntEl)
