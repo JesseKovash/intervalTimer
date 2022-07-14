@@ -93,7 +93,7 @@
       hideElement(savedIntEl)
       hideElement(bannerEl)
       hideElement(intervalInfoContEl);
-      startBannerTextEl.textContent = "Click Start To Begin";
+      startBannerTextEl.textContent = "Click Start";
       showElement(startBannerEl)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       spanPercent.textContent = '';
