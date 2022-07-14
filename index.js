@@ -8,6 +8,7 @@
     const pauseBtn = document.getElementById('pause-btn');
     const cancelBtn = document.getElementById('cancel-btn');
     const resumeBtn = document.getElementById('resume-btn');
+    const intervalInfoContEl = document.getElementById('interval-info-container');
     const spanPercent = document.getElementById('percent');
     const titleEl = document.getElementById('int-title');
     const descEl = document.getElementById('int-desc');
@@ -17,6 +18,8 @@
     const savedIntEl = document.getElementById('saved-options');
     const dropDownEl = document.getElementById('dropdown');
     const bannerEl = document.getElementById('banner');
+    const startBannerEl = document.getElementById('start-banner');
+    const startBannerTextEl = document.getElementById('start-banner-text');
     const startAudio = document.getElementById('start-audio');
     const nextAudio = document.getElementById('next-audio');
     const completeAudio = document.getElementById('complete-audio');
@@ -73,7 +76,16 @@
       result = onePercent * 100;
       if (index === 0) {
         startAudio.play()
+        startBannerTextEl.textContent = "3";
         setTimeout(()=> {
+          startBannerTextEl.textContent = "2";
+        }, 600)
+        setTimeout(()=> {
+          startBannerTextEl.textContent = "1";
+        }, 1200)
+        setTimeout(()=> {
+          hideElement(startBannerEl)
+          showElement(intervalInfoContEl)
           arcMove(currInterval.time, index);
         }, 1900)
       } else {
@@ -165,6 +177,7 @@
       clearInterval(arcInterval)
       hideButtons(true, true, true, true)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hideElement(startBannerEl)
       showElement(bannerEl)
       spanPercent.textContent = '';
       titleEl.textContent = '';

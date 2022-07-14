@@ -29,10 +29,13 @@
     </div>
   </div>
   <div id="banner">
-    <p>Interval Timer</p>
+    <p id="banner-text">Interval Timer</p>
     <svg xmlns="http://www.w3.org/2000/svg" id="clock" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
+  </div>
+  <div id="start-banner">
+    <p id="start-banner-text">Click Start To Begin</p>
   </div>
   <div id="interval-info-container">
     <h1 id="int-title"></h1>
@@ -131,7 +134,7 @@
     <source src="./audio/next.wav" type="audio/wav">
   </audio>
   <audio id="complete-audio">
-    <source src="./audio/complete.mp3" type="audio/mp3">
+    <source src="./audio/complete.wav" type="audio/mp3">
   </audio>
   <script src="./index.js"></script>
   <script src="./menu.js"></script>

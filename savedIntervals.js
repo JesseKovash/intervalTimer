@@ -10,9 +10,12 @@
     const hideButtons = window.intervalTimerApp.hideButtons;
     const hideElement = window.intervalTimerApp.hideElement;
     const showElement = window.intervalTimerApp.showElement;
+    const intervalInfoContEl = document.getElementById('interval-info-container');
     const formEl = document.querySelector('form');
     const helpEl = document.getElementById('help-container');
     const bannerEl = document.getElementById('banner');
+    const startBannerEl = document.getElementById('start-banner');
+    const startBannerTextEl = document.getElementById('start-banner-text');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const spanPercent = document.getElementById('percent');
@@ -89,6 +92,9 @@
       localStorage.setItem('currentInterval', JSON.stringify(intervals[targetClassIndex]));
       hideElement(savedIntEl)
       hideElement(bannerEl)
+      hideElement(intervalInfoContEl);
+      startBannerTextEl.textContent = "Click Start To Begin";
+      showElement(startBannerEl)
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       spanPercent.textContent = '';
       titleEl.textContent = '';

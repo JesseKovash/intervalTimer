@@ -68,7 +68,7 @@ span#percent {
   position: absolute;
   left: 50%;
   top: 50%;
-  font-size: 50px;
+  font-size: 3.2rem;
   transform: translate(-50%, -50%);
   color: var(--contrast-color);
 }
@@ -118,6 +118,13 @@ span#percent {
 }
 
 #banner {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  font-size: 3.2rem;
+}
+
+#start-banner {
+  display: none;
   font-family: 'Lobster', cursive;
   text-align: center;
   font-size: 3.2rem;
@@ -358,4 +365,73 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media (min-width: 1000px) {
+  #clock {
+    height: 325px;
+    width: 325px;
+  }
+
+  #banner {
+    text-align: center;
+    font-size: 3.8rem;
+  }
+
+  #dropdown-btn {
+    height: 48px;
+    width: 48px;
+  }
+
+  .theme-switch {
+    height: 40px;
+    width: 72px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    height: 32px;
+    left: 4px;
+    width: 32px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(32px);
+  }
+
+  .slider.round {
+    border-radius: 40px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  #start-banner, #banner {
+    font-size: 3.8rem;
+  }
+
+  h1 {
+    font-size: 3.6rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  canvas {
+    height: 360px;
+    width: 360px;
+  }
+
+  .canvas-wrap {
+    height: 360px;
+  }
+
+  span#percent {
+
+    font-size: 3.8rem;
+  }
+
 }
