@@ -46,7 +46,6 @@ form {
 input {
   background-color: var(--input-color);
   border: none;
-  /* color: var(--secondary-color); */
   color: var(--input-text);
   height: 25px;
   font-size: 1rem;
@@ -426,7 +425,7 @@ input:checked + .slider:before {
   }
 
   .canvas-wrap {
-    height: 360px;
+    height: 100%;
   }
 
   span#percent {
@@ -434,4 +433,17 @@ input:checked + .slider:before {
     font-size: 3.8rem;
   }
 
+}
+
+@media (max-height: 800px) {
+  canvas {
+    height: 250px;
+    width: 250px;
+  }
+
+  .canvas-wrap {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+  }
 }
