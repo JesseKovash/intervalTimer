@@ -94,15 +94,15 @@
           hideElement(startBannerEl);
           showElement(intervalInfoContEl);
           showButtons(false, true, false, true);
-          arcMove(currInterval.time, index);
+          arcMove(currInterval.time, index, true);
         }, 1900);
       } else {
-        arcMove(currInterval.time, index);
+        arcMove(currInterval.time, index, true);
       }
     }
 
-    function arcMove(oneInterval, index) {
-      if (index > 0) nextAudio.play();
+    function arcMove(oneInterval, index, notResumed) {
+      if (index > 0 && notResumed) nextAudio.play();
       const totalCount = oneInterval * 5;
       arcInterval = setInterval(function () {
         degrees = (count / totalCount) * 360;
@@ -200,7 +200,7 @@
       let oneInterval = intervals[currIndex].time;
       hideButtons(false, false, true);
       showButtons(false, true);
-      arcMove(oneInterval, currIndex);
+      arcMove(oneInterval, currIndex, false);
     }
 
     function cancelWorkout() {
