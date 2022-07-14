@@ -1,4 +1,5 @@
 (function() {
+  if (!localStorage.allIntervals) localStorage.allIntervals= "[]";
   const initTimer = function() {
     const body = document.querySelector('body');
     const canvas = document.getElementById('canvas');
