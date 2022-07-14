@@ -24,10 +24,13 @@
     const resumeBtnEl = document.getElementById('resume-btn');
     const cancelBtnEl = document.getElementById('cancel-btn');
     const dropDownEl = document.getElementById('dropdown');
-    const intervals = JSON.parse(localStorage.allIntervals);
-    let intervalHTML = intervals.map((oneInt, index)=> {
-      return formatInterval(oneInt, index);
-    });
+    const intervals = JSON.parse(localStorage.allIntervals) || "";
+    let intervalHTML = [];
+    if (intervals.length !== 0) {
+      intervalHTML = intervals.map((oneInt, index)=> {
+        return formatInterval(oneInt, index);
+      });
+    }
     renderSaved(intervalHTML)
 
     function formatInterval(int, index) {
