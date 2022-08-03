@@ -408,7 +408,7 @@ input:checked + .slider:before {
   }
 
   #start-banner, #banner {
-    font-size: 3.8rem;
+    font-size: 3.6rem;
   }
 
   h1 {
@@ -429,7 +429,6 @@ input:checked + .slider:before {
   }
 
   span#percent {
-
     font-size: 3.8rem;
   }
 
