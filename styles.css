@@ -67,7 +67,7 @@ span#percent {
   position: absolute;
   left: 50%;
   top: 50%;
-  font-size: 3.2rem;
+  /* font-size: 3.2rem; */
   transform: translate(-50%, -50%);
   color: var(--contrast-color);
 }
@@ -429,7 +429,7 @@ input:checked + .slider:before {
   }
 
   span#percent {
-    font-size: 3.4rem;
+    font-size: 3.2rem;
   }
 
 }
