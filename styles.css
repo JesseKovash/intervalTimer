@@ -429,7 +429,7 @@ input:checked + .slider:before {
   }
 
   span#percent {
-    font-size: 3.8rem;
+    font-size: 3.6rem;
   }
 
 }
